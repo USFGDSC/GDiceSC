@@ -9,11 +9,13 @@ status: draft
 
 We're gonna make a dice roll app called GDiceSC.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\intro.gif" width="360" height="800">
+<img src="usf_gdsc_spring_2024_flutter_workshop\img\intro.gif" width="270" height="600">
 
 ## Default Flutter app
 
 Replace the starter app with a base to start from.
+
+<img src="usf_gdsc_spring_2024_flutter_workshop\img\default_flutter_app.png" width="270" height="600">
 
 main.dart
 ```dart
@@ -50,6 +52,8 @@ class _GDiceSCState extends State<GDiceSC> {
 ## Standard app layout
 
 Build a layout common among most mobile apps.
+
+<img src="usf_gdsc_spring_2024_flutter_workshop\img\standard_app_layout.gif" width="270" height="600">
 
 main.dart
 ```dart
@@ -116,6 +120,8 @@ class _GDiceSCState extends State<GDiceSC> {
 
 Create home.dart and settings.dart to build the home and settings page then import them in main.dart.
 
+<img src="usf_gdsc_spring_2024_flutter_workshop\img\seperate_page_files.gif" width="270" height="600">
+
 home.dart
 ```dart
 import 'package:flutter/material.dart';
@@ -146,7 +152,7 @@ settings.dart
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
-  const MainApp({super.key});
+  const SettingsPage({super.key});
 
   @override
   State<SettingsPage> createState() => _SettingsPage();
@@ -232,6 +238,6 @@ class _GDiceSCState extends State<GDiceSC> {
 
 ## Conclusion
 
-Good job
+Good job.
 
 <img src="usf_gdsc_spring_2024_flutter_workshop\img\stand_proud.jpeg">
