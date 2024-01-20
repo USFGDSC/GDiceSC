@@ -9,6 +9,8 @@ status: draft
 
 We're gonna make a dice roll app called GDiceSC.
 
+<img src="usf_gdsc_spring_2024_flutter_workshop\img\intro.gif" width="360" height="800">
+
 ## Default Flutter app
 
 Replace the starter app with a base to start from.

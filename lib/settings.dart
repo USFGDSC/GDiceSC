@@ -19,9 +19,9 @@ class _SettingsPageState extends State<SettingsPage> {
         children: [
           Text( "Dice sides: ${sides.round()}", style: const TextStyle( fontSize: 32 ) ),
           Slider(
-            min: 1,
+            min: 2,
             max: 20,
-            divisions: 19,
+            divisions: 18,
             value: sides,
             onChanged: (value) => setState( () => sides = value ),
           ),
