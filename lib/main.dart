@@ -1,17 +1,54 @@
 import 'package:flutter/material.dart';
 
+import 'account.dart';
+import 'home.dart';
+import 'settings.dart';
+
 void main() {
-  runApp(const MainApp());
+  runApp( MaterialApp(
+    debugShowCheckedModeBanner: false,
+    theme: ThemeData.light().copyWith(
+      appBarTheme: const AppBarTheme(
+        centerTitle: true,
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      sliderTheme: const SliderThemeData(
+        activeTrackColor: Colors.red,
+        inactiveTrackColor: Colors.black,
+        thumbColor: Colors.red,
+      ),
+      snackBarTheme: const SnackBarThemeData(
+        backgroundColor: Colors.white,
+        actionTextColor: Colors.red,
+        contentTextStyle: TextStyle(
+          color: Colors.black,
+        ),
+        behavior: SnackBarBehavior.floating,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: Colors.red,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
+      )
+    ),
+    title: "GDiceSC",
+    home: const GDiceSC(),
+  ));
 }
 
-class MainApp extends StatefulWidget {
-  const MainApp({super.key});
+class GDiceSC extends StatefulWidget {
+  const GDiceSC({super.key});
 
   @override
-  State<MainApp> createState() => _MainAppState();
+  State<GDiceSC> createState() => _GDiceSCState();
 }
 
-class _MainAppState extends State<MainApp> {
+class _GDiceSCState extends State<GDiceSC> {
 
   int _currentIndex = 0;
   final PageController _pageController = PageController(
@@ -20,39 +57,44 @@ class _MainAppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "GDiceSC",
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text( "GDiceSC" ),
-          centerTitle: true,
-        ),
-        body: PageView(
-          controller: _pageController,
-          onPageChanged: (newIndex) => setState( () => _currentIndex = newIndex ),
-          children: const [
-            Center( child: Text( "Home") ),
-            Center( child: Text( "Settings") ),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (newIndex) {
-            setState( () => _currentIndex = newIndex );
-            _pageController.jumpToPage(_currentIndex);
-          },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon( Icons.home ),
-              label: "Home",
-            ),
-            BottomNavigationBarItem(
-              icon: Icon( Icons.settings ),
-              label: "Settings",
-            ),
-          ],
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text( "GDiceSC" ),
+        actions: [
+          IconButton(
+            icon: const Icon( Icons.person ),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute( builder: (context) => const AccountPage() ),
+              );
+            },
+          ),
+        ],
+      ),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (selectedIndex) => setState( () => _currentIndex = selectedIndex ),
+        children: const [
+          HomePage(),
+          SettingsPage(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (selectedIndex) {
+          setState( () => _currentIndex = selectedIndex );
+          _pageController.jumpToPage(_currentIndex);
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon( Icons.home ),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon( Icons.settings ),
+            label: "Settings",
+          ),
+        ],
       ),
     );
   }
