@@ -7,7 +7,7 @@ import 'settings.dart';
 void main() {
   runApp( MaterialApp(
     debugShowCheckedModeBanner: false,
-    theme: ThemeData.light().copyWith(
+    theme: ThemeData(
       appBarTheme: const AppBarTheme(
         centerTitle: true,
         backgroundColor: Colors.red,

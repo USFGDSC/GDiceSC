@@ -253,6 +253,196 @@ class _GDiceSCState extends State&lt;GDiceSC&gt; {
 
       </google-codelab-step>
     
+      <google-codelab-step label="User input elements" duration="0">
+        <p>Let the user set how many sides the dice will have on the settings page.</p>
+<p class="image-container"><img style="width: 270.00px" src="img\\a0cd52fe80dfe1f8.gif"></p>
+<p>settings.dart</p>
+<pre><code language="language-dart" class="language-dart">import &#39;package:flutter/material.dart&#39;;
+
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
+
+  @override
+  State&lt;SettingsPage&gt; createState() =&gt; _SettingsPageState();
+}
+
+double sides = 6;
+
+class _SettingsPageState extends State&lt;SettingsPage&gt; {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text( &#34;Dice sides: ${sides.round()}&#34;, style: const TextStyle( fontSize: 32 ) ),
+          Slider(
+            min: 2,
+            max: 20,
+            divisions: 18,
+            value: sides,
+            onChanged: (value) =&gt; setState( () =&gt; sides = value ),
+          ),
+        ],
+      )
+    );
+  }
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Main app feature" duration="0">
+        <p>Let the user roll the dice in the home page.</p>
+<p class="image-container"><img style="width: 270.00px" src="img\\3ed28a8db80d70c5.gif"></p>
+<p>home.dart</p>
+<pre><code language="language-dart" class="language-dart">import &#39;dart:math&#39;;
+
+import &#39;package:flutter/material.dart&#39;;
+
+import &#39;settings.dart&#39;;
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State&lt;HomePage&gt; createState() =&gt; _HomePageState();
+}
+
+class _HomePageState extends State&lt;HomePage&gt; {
+
+  int _prev = 0;
+  int _curr = 0;
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center( child: Text( &#34;Previous roll: $_prev&#34; ) ),
+          Center( child: Text( &#34;$_curr&#34;, style: const TextStyle( fontSize: 256 ) ) ),
+        ]
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon( Icons.refresh ),
+        onPressed: () {
+          setState( () {
+            _prev = _curr;
+            _curr = Random().nextInt( sides.round() ) + 1;
+          });
+        },
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+    );
+  }
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Design app theme" duration="0">
+        <p>Change colors and other visual features with theme data.</p>
+<p class="image-container"><img style="width: 270.00px" src="img\\58c1a542aa690cc0.gif"></p>
+<p>main.dart</p>
+<pre><code language="language-dart" class="language-dart">import &#39;package:flutter/material.dart&#39;;
+
+import &#39;home.dart&#39;;
+import &#39;settings.dart&#39;;
+
+void main() {
+  runApp( MaterialApp(
+    theme: ThemeData(
+      appBarTheme: const AppBarTheme(
+        centerTitle: true,
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      sliderTheme: const SliderThemeData(
+        activeTrackColor: Colors.red,
+        inactiveTrackColor: Colors.black,
+        thumbColor: Colors.red,
+      ),
+      snackBarTheme: const SnackBarThemeData(
+        backgroundColor: Colors.white,
+        actionTextColor: Colors.red,
+        contentTextStyle: TextStyle(
+          color: Colors.black,
+        ),
+        behavior: SnackBarBehavior.floating,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: Colors.red,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
+      ),
+    ),
+    title: &#34;GDiceSC&#34;,
+    home: const GDiceSC(),
+  ));
+}
+
+class GDiceSC extends StatefulWidget {
+  const GDiceSC({super.key});
+
+  @override
+  State&lt;GDiceSC&gt; createState() =&gt; _GDiceSCState();
+}
+
+class _GDiceSCState extends State&lt;GDiceSC&gt; {
+
+  int _currentIndex = 0;
+  final PageController _pageController = PageController(
+    initialPage: 0,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text( &#34;GDiceSC&#34; ),
+      ),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (selectedIndex) =&gt; setState( () =&gt; _currentIndex = selectedIndex ),
+        children: const [
+          HomePage(),
+          SettingsPage(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (selectedIndex) {
+          setState( () =&gt; _currentIndex = selectedIndex );
+          _pageController.jumpToPage(_currentIndex);
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: &#34;Home&#34;,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: &#34;Settings&#34;,
+          ),
+        ],
+      ),
+    );
+  }
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="Conclusion" duration="0">
         <p>Good job.</p>
 <p class="image-container"><img src="img\\4d2decf0ad294764.jpeg"></p>
