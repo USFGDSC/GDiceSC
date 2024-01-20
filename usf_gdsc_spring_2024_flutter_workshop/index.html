@@ -58,11 +58,9 @@ class GDiceSC extends StatefulWidget {
 class _GDiceSCState extends State&lt;GDiceSC&gt; {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text(&#39;Hello World!&#39;),
-        ),
+    return const Scaffold(
+      body: Center(
+        child: Text(&#39;Hello World!&#39;),
       ),
     );
   }
@@ -443,9 +441,271 @@ class _GDiceSCState extends State&lt;GDiceSC&gt; {
 
       </google-codelab-step>
     
+      <google-codelab-step label="Accounts with Firebase" duration="0">
+        <p>Prepare to add user authentication with Firebase in a future workshop.</p>
+<p class="image-container"><img style="width: 270.00px" src="img\\c989e28fc24904dd.gif"></p>
+<p>account.dart</p>
+<pre><code language="language-dart" class="language-dart">import &#39;package:flutter/material.dart&#39;;
+
+class AccountPage extends StatefulWidget {
+  const AccountPage({super.key});
+
+  @override
+  State&lt;AccountPage&gt; createState() =&gt; _AccountPageState();
+}
+
+class _AccountPageState extends State&lt;AccountPage&gt; {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text( &#34;My Account&#34; ),
+        automaticallyImplyLeading: false,
+      ),
+      body: const Center( child: Text(&#34;Account&#34;), ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (selectedIndex) {
+          String snackBarMessage = selectedIndex == 0 ? &#34;Account changes saved!&#34; : &#34;Account changes discarded&#34;;
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(snackBarMessage),
+              action: SnackBarAction(
+                label: &#34;Ok&#34;,
+                onPressed: () {},
+              )
+            )
+          );
+          Navigator.pop(context);
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.save),
+            label: &#34;Save&#34;,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.delete),
+            label: &#34;Discard&#34;,
+          ),
+        ],
+      ),
+    );
+  }
+}
+</code></pre>
+<p>main.dart</p>
+<pre><code language="language-dart" class="language-dart">import &#39;package:flutter/material.dart&#39;;
+
+import &#39;account.dart&#39;;
+import &#39;home.dart&#39;;
+import &#39;settings.dart&#39;;
+
+void main() {
+  runApp( MaterialApp(
+    theme: ThemeData(
+      appBarTheme: const AppBarTheme(
+        centerTitle: true,
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      sliderTheme: const SliderThemeData(
+        activeTrackColor: Colors.red,
+        inactiveTrackColor: Colors.black,
+        thumbColor: Colors.red,
+      ),
+      snackBarTheme: const SnackBarThemeData(
+        backgroundColor: Colors.white,
+        actionTextColor: Colors.red,
+        contentTextStyle: TextStyle(
+          color: Colors.black,
+        ),
+        behavior: SnackBarBehavior.floating,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: Colors.red,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
+      ),
+    ),
+    title: &#34;GDiceSC&#34;,
+    home: const GDiceSC(),
+  ));
+}
+
+class GDiceSC extends StatefulWidget {
+  const GDiceSC({super.key});
+
+  @override
+  State&lt;GDiceSC&gt; createState() =&gt; _GDiceSCState();
+}
+
+class _GDiceSCState extends State&lt;GDiceSC&gt; {
+
+  int _currentIndex = 0;
+  final PageController _pageController = PageController(
+    initialPage: 0,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text( &#34;GDiceSC&#34; ),
+        actions: [
+          IconButton(
+            icon: const Icon( Icons.person ),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute( builder: (context) =&gt; const AccountPage() ),
+              );
+            },
+          ),
+        ],
+      ),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (selectedIndex) =&gt; setState( () =&gt; _currentIndex = selectedIndex ),
+        children: const [
+          HomePage(),
+          SettingsPage(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (selectedIndex) {
+          setState( () =&gt; _currentIndex = selectedIndex );
+          _pageController.jumpToPage(_currentIndex);
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: &#34;Home&#34;,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: &#34;Settings&#34;,
+          ),
+        ],
+      ),
+    );
+  }
+}
+</code></pre>
+
+
+      </google-codelab-step>
+    
       <google-codelab-step label="Conclusion" duration="0">
-        <p>Good job.</p>
-<p class="image-container"><img src="img\\4d2decf0ad294764.jpeg"></p>
+        <p>Mark your app as complete by removing the debug banner.</p>
+<p>main.dart</p>
+<pre><code language="language-dart" class="language-dart">import &#39;package:flutter/material.dart&#39;;
+
+import &#39;account.dart&#39;;
+import &#39;home.dart&#39;;
+import &#39;settings.dart&#39;;
+
+void main() {
+  runApp( MaterialApp(
+    debugShowCheckedModeBanner: false, // removes the red debug banner on the top right corner
+    theme: ThemeData(
+      appBarTheme: const AppBarTheme(
+        centerTitle: true,
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      sliderTheme: const SliderThemeData(
+        activeTrackColor: Colors.red,
+        inactiveTrackColor: Colors.black,
+        thumbColor: Colors.red,
+      ),
+      snackBarTheme: const SnackBarThemeData(
+        backgroundColor: Colors.white,
+        actionTextColor: Colors.red,
+        contentTextStyle: TextStyle(
+          color: Colors.black,
+        ),
+        behavior: SnackBarBehavior.floating,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: Colors.red,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.black,
+      ),
+    ),
+    title: &#34;GDiceSC&#34;,
+    home: const GDiceSC(),
+  ));
+}
+
+class GDiceSC extends StatefulWidget {
+  const GDiceSC({super.key});
+
+  @override
+  State&lt;GDiceSC&gt; createState() =&gt; _GDiceSCState();
+}
+
+class _GDiceSCState extends State&lt;GDiceSC&gt; {
+
+  int _currentIndex = 0;
+  final PageController _pageController = PageController(
+    initialPage: 0,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text( &#34;GDiceSC&#34; ),
+        actions: [
+          IconButton(
+            icon: const Icon( Icons.person ),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute( builder: (context) =&gt; const AccountPage() ),
+              );
+            },
+          ),
+        ],
+      ),
+      body: PageView(
+        controller: _pageController,
+        onPageChanged: (selectedIndex) =&gt; setState( () =&gt; _currentIndex = selectedIndex ),
+        children: const [
+          HomePage(),
+          SettingsPage(),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (selectedIndex) {
+          setState( () =&gt; _currentIndex = selectedIndex );
+          _pageController.jumpToPage(_currentIndex);
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: &#34;Home&#34;,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: &#34;Settings&#34;,
+          ),
+        ],
+      ),
+    );
+  }
+}
+</code></pre>
+<p>Good job.</p>
+<p class="image-container"><img src="img\\99fdf84ab5a7c7bd.jpeg"></p>
 
 
       </google-codelab-step>
