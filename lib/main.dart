@@ -34,7 +34,7 @@ void main() {
         backgroundColor: Colors.red,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.black,
-      )
+      ),
     ),
     title: "GDiceSC",
     home: const GDiceSC(),
@@ -87,11 +87,11 @@ class _GDiceSCState extends State<GDiceSC> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon( Icons.home ),
+            icon: Icon(Icons.home),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon( Icons.settings ),
+            icon: Icon(Icons.settings),
             label: "Settings",
           ),
         ],

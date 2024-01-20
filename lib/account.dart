@@ -22,7 +22,7 @@ class _AccountPageState extends State<AccountPage> {
           String snackBarMessage = selectedIndex == 0 ? "Account changes saved!" : "Account changes discarded";
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text( snackBarMessage ),
+              content: Text(snackBarMessage),
               action: SnackBarAction(
                 label: "Ok",
                 onPressed: () {},
@@ -33,11 +33,11 @@ class _AccountPageState extends State<AccountPage> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon( Icons.save ),
+            icon: Icon(Icons.save),
             label: "Save",
           ),
           BottomNavigationBarItem(
-            icon: Icon( Icons.delete ),
+            icon: Icon(Icons.delete),
             label: "Discard",
           ),
         ],

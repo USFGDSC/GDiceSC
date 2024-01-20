@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center( child: Text( "Previous roll: $_prev" ) ),
-          Center( child: Text( "Current roll: $_curr" ) ),
+          Center( child: Text( "$_curr", style: const TextStyle( fontSize: 256 ) ) ),
         ]
       ),
       floatingActionButton: FloatingActionButton(

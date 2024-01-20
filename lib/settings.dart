@@ -7,7 +7,7 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
-double sides = 1;
+double sides = 6;
 
 class _SettingsPageState extends State<SettingsPage> {
 
@@ -17,7 +17,7 @@ class _SettingsPageState extends State<SettingsPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text( "Dice sides: ${sides.round()}" ),
+          Text( "Dice sides: ${sides.round()}", style: const TextStyle( fontSize: 32 ) ),
           Slider(
             min: 1,
             max: 20,
