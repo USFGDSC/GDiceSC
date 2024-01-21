@@ -4,14 +4,12 @@ id: docs
 # USF GDSC Spring 2024 Flutter Workshop
 
 ## Introduction
-Duration 5:00
 
 We're gonna make a dice roll app called GDiceSC in [zapp.run/edit/flutter](https://zapp.run/edit/flutter).
 
 <img src="docs\img\intro.gif" width="270" height="600">
 
 ## Default Flutter app
-Duration 10:00
 
 Replace the starter app with a base to start from.
 
@@ -48,7 +46,6 @@ class _GDiceSCState extends State<GDiceSC> {
 ```
 
 ## Standard app layout
-Duration 10:00
 
 Build a layout common among most mobile apps.
 
@@ -116,7 +113,6 @@ class _GDiceSCState extends State<GDiceSC> {
 ```
 
 ## Seperate page files
-Duration 10:00
 
 Create home.dart and settings.dart to build the home and settings page then import them in main.dart.
 
@@ -237,7 +233,6 @@ class _GDiceSCState extends State<GDiceSC> {
 ```
 
 ## User input elements
-Duration 20:00
 
 Let the user set how many sides the dice will have on the settings page.
 
@@ -280,7 +275,6 @@ class _SettingsPageState extends State<SettingsPage> {
 ```
 
 ## Main app feature
-Duration 20:00
 
 Let the user roll the dice in the home page.
 
@@ -333,7 +327,6 @@ class _HomePageState extends State<HomePage> {
 ```
 
 ## Design app theme
-Duration 10:00
 
 Change colors and other visual features with theme data.
 
@@ -425,7 +418,6 @@ class _GDiceSCState extends State<GDiceSC> {
 ```
 
 ## Accounts with Firebase
-Duration 30:00
 
 Prepare to add user authentication with Firebase in a future workshop.
 
@@ -587,7 +579,6 @@ class _GDiceSCState extends State<GDiceSC> {
 ```
 
 ## Conclusion
-Duration 5:00
 
 Mark your app as complete by removing the debug banner.
 
