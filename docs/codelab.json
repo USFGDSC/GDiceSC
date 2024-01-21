@@ -3,8 +3,8 @@
   "format": "html",
   "prefix": "https://storage.googleapis.com",
   "mainga": "UA-49880327-14",
-  "updated": "2024-01-20T18:23:44-05:00",
-  "id": "usf_gdsc_spring_2024_flutter_workshop",
+  "updated": "2024-01-20T19:36:01-05:00",
+  "id": "docs",
   "duration": 0,
   "title": "USF GDSC Spring 2024 Flutter Workshop",
   "summary": "USF GDSC Spring 2024 Flutter Workshop",
@@ -13,5 +13,5 @@
   "status": null,
   "category": null,
   "tags": [],
-  "url": "usf_gdsc_spring_2024_flutter_workshop"
+  "url": "docs"
 }

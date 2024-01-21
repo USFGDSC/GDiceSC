@@ -1,5 +1,5 @@
 summary: USF GDSC Spring 2024 Flutter Workshop
-id: usf_gdsc_spring_2024_flutter_workshop
+id: docs
 
 # USF GDSC Spring 2024 Flutter Workshop
 
@@ -7,13 +7,13 @@ id: usf_gdsc_spring_2024_flutter_workshop
 
 We're gonna make a dice roll app called GDiceSC.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\intro.gif" width="270" height="600">
+<img src="docs\img\intro.gif" width="270" height="600">
 
 ## Default Flutter app
 
 Replace the starter app with a base to start from.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\default_flutter_app.png" width="270" height="600">
+<img src="docs\img\default_flutter_app.png" width="270" height="600">
 
 main.dart
 ```dart
@@ -49,7 +49,7 @@ class _GDiceSCState extends State<GDiceSC> {
 
 Build a layout common among most mobile apps.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\standard_app_layout.gif" width="270" height="600">
+<img src="docs\img\standard_app_layout.gif" width="270" height="600">
 
 main.dart
 ```dart
@@ -116,7 +116,7 @@ class _GDiceSCState extends State<GDiceSC> {
 
 Create home.dart and settings.dart to build the home and settings page then import them in main.dart.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\seperate_page_files.gif" width="270" height="600">
+<img src="docs\img\seperate_page_files.gif" width="270" height="600">
 
 home.dart
 ```dart
@@ -236,7 +236,7 @@ class _GDiceSCState extends State<GDiceSC> {
 
 Let the user set how many sides the dice will have on the settings page.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\user_input_elements.gif" width="270" height="600">
+<img src="docs\img\user_input_elements.gif" width="270" height="600">
 
 settings.dart
 ```dart
@@ -278,7 +278,7 @@ class _SettingsPageState extends State<SettingsPage> {
 
 Let the user roll the dice in the home page.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\main_app_feature.gif" width="270" height="600">
+<img src="docs\img\main_app_feature.gif" width="270" height="600">
 
 home.dart
 ```dart
@@ -330,7 +330,7 @@ class _HomePageState extends State<HomePage> {
 
 Change colors and other visual features with theme data.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\design_app_theme.gif" width="270" height="600">
+<img src="docs\img\design_app_theme.gif" width="270" height="600">
 
 main.dart
 ```dart
@@ -429,7 +429,7 @@ class _GDiceSCState extends State<GDiceSC> {
 
 Prepare to add user authentication with Firebase in a future workshop.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\accounts_with_firebase.gif" width="270" height="600">
+<img src="docs\img\accounts_with_firebase.gif" width="270" height="600">
 
 account.dart
 ```dart
@@ -697,4 +697,4 @@ class _GDiceSCState extends State<GDiceSC> {
 
 Good job.
 
-<img src="usf_gdsc_spring_2024_flutter_workshop\img\stand_proud.jpeg">
+<img src="docs\img\stand_proud.jpeg">
