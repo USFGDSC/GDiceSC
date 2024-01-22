@@ -20,12 +20,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center( child: Text( "Previous roll: $_prev" ) ),
-          Center( child: Text( "$_curr", style: const TextStyle( fontSize: 256 ) ) ),
-        ]
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text( "Previous roll: $_prev" ),
+            Text(
+              "$_curr",
+              style: const TextStyle( fontSize: 256 ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon( Icons.refresh ),

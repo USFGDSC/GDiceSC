@@ -56,6 +56,7 @@ class GDiceSC extends StatefulWidget {
 }
 
 class _GDiceSCState extends State&lt;GDiceSC&gt; {
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -150,6 +151,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State&lt;HomePage&gt; {
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -173,6 +175,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPage extends State&lt;SettingsPage&gt; {
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -271,19 +274,24 @@ class _SettingsPageState extends State&lt;SettingsPage&gt; {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text( &#34;Dice sides: ${sides.round()}&#34;, style: const TextStyle( fontSize: 32 ) ),
-          Slider(
-            min: 2,
-            max: 20,
-            divisions: 18,
-            value: sides,
-            onChanged: (value) =&gt; setState( () =&gt; sides = value ),
-          ),
-        ],
-      )
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              &#34;Dice sides: ${sides.round()}&#34;,
+              style: const TextStyle( fontSize: 32 )
+            ),
+            Slider(
+              min: 2,
+              max: 20,
+              divisions: 18,
+              value: sides,
+              onChanged: (value) =&gt; setState( () =&gt; sides = value ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -318,12 +326,17 @@ class _HomePageState extends State&lt;HomePage&gt; {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center( child: Text( &#34;Previous roll: $_prev&#34; ) ),
-          Center( child: Text( &#34;$_curr&#34;, style: const TextStyle( fontSize: 256 ) ) ),
-        ]
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text( &#34;Previous roll: $_prev&#34; ),
+            Text(
+              &#34;$_curr&#34;,
+              style: const TextStyle( fontSize: 256 ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon( Icons.refresh ),
@@ -458,10 +471,13 @@ class _AccountPageState extends State&lt;AccountPage&gt; {
       body: const Center( child: Text(&#34;Account&#34;), ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (selectedIndex) {
-          String snackBarMessage = selectedIndex == 0 ? &#34;Account changes saved!&#34; : &#34;Account changes discarded&#34;;
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(snackBarMessage),
+              content: Text(
+                selectedIndex == 0 ?
+                &#34;Account changes saved!&#34; :
+                &#34;Account changes discarded&#34;
+              ),
               action: SnackBarAction(
                 label: &#34;Ok&#34;,
                 onPressed: () {},

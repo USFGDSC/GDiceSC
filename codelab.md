@@ -34,6 +34,7 @@ class GDiceSC extends StatefulWidget {
 }
 
 class _GDiceSCState extends State<GDiceSC> {
+
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -130,6 +131,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -155,6 +157,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPage extends State<SettingsPage> {
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
@@ -256,19 +259,24 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text( "Dice sides: ${sides.round()}", style: const TextStyle( fontSize: 32 ) ),
-          Slider(
-            min: 2,
-            max: 20,
-            divisions: 18,
-            value: sides,
-            onChanged: (value) => setState( () => sides = value ),
-          ),
-        ],
-      )
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Dice sides: ${sides.round()}",
+              style: const TextStyle( fontSize: 32 )
+            ),
+            Slider(
+              min: 2,
+              max: 20,
+              divisions: 18,
+              value: sides,
+              onChanged: (value) => setState( () => sides = value ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -304,12 +312,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center( child: Text( "Previous roll: $_prev" ) ),
-          Center( child: Text( "$_curr", style: const TextStyle( fontSize: 256 ) ) ),
-        ]
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text( "Previous roll: $_prev" ),
+            Text(
+              "$_curr",
+              style: const TextStyle( fontSize: 256 ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon( Icons.refresh ),
@@ -446,10 +459,13 @@ class _AccountPageState extends State<AccountPage> {
       body: const Center( child: Text("Account"), ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (selectedIndex) {
-          String snackBarMessage = selectedIndex == 0 ? "Account changes saved!" : "Account changes discarded";
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(snackBarMessage),
+              content: Text(
+                selectedIndex == 0 ?
+                "Account changes saved!" :
+                "Account changes discarded"
+              ),
               action: SnackBarAction(
                 label: "Ok",
                 onPressed: () {},

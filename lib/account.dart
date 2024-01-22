@@ -19,10 +19,13 @@ class _AccountPageState extends State<AccountPage> {
       body: const Center( child: Text("Account"), ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (selectedIndex) {
-          String snackBarMessage = selectedIndex == 0 ? "Account changes saved!" : "Account changes discarded";
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(snackBarMessage),
+              content: Text(
+                selectedIndex == 0 ?
+                "Account changes saved!" :
+                "Account changes discarded"
+              ),
               action: SnackBarAction(
                 label: "Ok",
                 onPressed: () {},
